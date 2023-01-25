@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class Tests extends TestBase{
 
     @Test
@@ -147,8 +149,8 @@ public class Tests extends TestBase{
 
         WebElement priceManagement = driver.findElement(By.linkText("Operations Module"));
         priceManagement.click();
-        WebElement vehicles = driver.findElement(By.cssSelector(".ng-star-inserted.ng-tns-c5-0.pcoded-hasmenu.pcoded-trigger > .pcoded-submenu > li:nth-of-type(1) > .ng-tns-c5-0"));
-        vehicles.click();
+        List<WebElement> vehicles = driver.findElements(By.linkText("Vehicles"));
+        vehicles.get(1).click();
         waitForFinding();
 
         String get_url = driver.getCurrentUrl();
