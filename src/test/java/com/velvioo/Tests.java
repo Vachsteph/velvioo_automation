@@ -3,6 +3,7 @@ package com.velvioo;
 import config.Configuration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,8 +14,7 @@ public class Tests extends TestBase{
     @Test
     public void LiveMap(){
 
-        WebElement liveMap = driver.findElement(By.linkText("Live map"));
-                liveMap.click();
+         driver.findElement(By.linkText("Live map")).click();
 
        waitForFinding();
 
@@ -25,8 +25,7 @@ public class Tests extends TestBase{
     @Test
     public void Fleet(){
 
-        WebElement fleet = driver.findElement(By.linkText("Fleet"));
-        fleet.click();
+        driver.findElement(By.linkText("Fleet")).click();
         waitForFinding();
 
         String get_url = driver.getCurrentUrl();
@@ -36,8 +35,7 @@ public class Tests extends TestBase{
     @Test
     public void Users(){
 
-        WebElement users = driver.findElement(By.linkText("Users"));
-        users.click();
+        driver.findElement(By.linkText("Users")).click();
         waitForFinding();
 
         String get_url = driver.getCurrentUrl();
@@ -47,8 +45,7 @@ public class Tests extends TestBase{
     @Test
     public void Stations(){
 
-        WebElement stations = driver.findElement(By.linkText("Stations"));
-        stations.click();
+        driver.findElement(By.linkText("Stations")).click();
         waitForFinding();
 
         String get_url = driver.getCurrentUrl();
@@ -58,8 +55,7 @@ public class Tests extends TestBase{
     @Test
     public void Vehicles(){
 
-        WebElement vehicles = driver.findElement(By.linkText("Vehicles"));
-        vehicles.click();
+        driver.findElement(By.linkText("Vehicles")).click();
         waitForFinding();
 
         String get_url = driver.getCurrentUrl();
@@ -69,162 +65,128 @@ public class Tests extends TestBase{
     @Test
     public void Rates(){
 
-        WebElement priceManagement = driver.findElement(By.linkText("Price management"));
-        priceManagement.click();
-        WebElement rates = driver.findElement(By.linkText("Rates"));
-        rates.click();
+        driver.findElement(By.linkText("Price management")).click();
+        driver.findElement(By.linkText("Rates")).click();
         waitForFinding();
 
-        String get_url = driver.getCurrentUrl();
-        Assert.assertEquals(get_url,Configuration.ADMIN_URL +"/priceManagement/rates");
+        Assert.assertEquals(driver.getCurrentUrl(),Configuration.ADMIN_URL +"/priceManagement/rates");
     }
 
     @Test
     public void Balance(){
 
-        WebElement priceManagement = driver.findElement(By.linkText("Price management"));
-        priceManagement.click();
-        WebElement balance = driver.findElement(By.linkText("Balance"));
-        balance.click();
+        driver.findElement(By.linkText("Price management")).click();
+        driver.findElement(By.linkText("Balance")).click();
         waitForFinding();
 
-        String get_url = driver.getCurrentUrl();
-        Assert.assertEquals(get_url,Configuration.ADMIN_URL +"/priceManagement/balance");
+        Assert.assertEquals(driver.getCurrentUrl(),Configuration.ADMIN_URL +"/priceManagement/balance");
     }
 
     @Test
     public void Plans(){
 
-        WebElement priceManagement = driver.findElement(By.linkText("Price management"));
-        priceManagement.click();
-        WebElement plans = driver.findElement(By.linkText("Plans"));
-        plans.click();
+        driver.findElement(By.linkText("Price management")).click();
+        driver.findElement(By.linkText("Plans")).click();
         waitForFinding();
 
-        String get_url = driver.getCurrentUrl();
-        Assert.assertEquals(get_url,Configuration.ADMIN_URL +"/priceManagement/plans");
+        Assert.assertEquals(driver.getCurrentUrl(),Configuration.ADMIN_URL +"/priceManagement/plans");
     }
 
     @Test
     public void Programs(){
 
-        WebElement priceManagement = driver.findElement(By.linkText("Price management"));
-        priceManagement.click();
-        WebElement programs = driver.findElement(By.linkText("Programs"));
-        programs.click();
+        driver.findElement(By.linkText("Price management")).click();
+        driver.findElement(By.linkText("Programs")).click();
         waitForFinding();
 
-        String get_url = driver.getCurrentUrl();
-        Assert.assertEquals(get_url,Configuration.ADMIN_URL +"/priceManagement/programs");
+        Assert.assertEquals(driver.getCurrentUrl(),Configuration.ADMIN_URL +"/priceManagement/programs");
     }
 
     @Test
     public void Renew(){
 
-        WebElement priceManagement = driver.findElement(By.linkText("Price management"));
-        priceManagement.click();
-        WebElement renew = driver.findElement(By.linkText("Renew"));
-        renew.click();
+        driver.findElement(By.linkText("Price management")).click();
+        driver.findElement(By.linkText("Renew")).click();
         waitForFinding();
 
-        String get_url = driver.getCurrentUrl();
-        Assert.assertEquals(get_url,Configuration.ADMIN_URL +"/priceManagement/renew");
+        Assert.assertEquals(driver.getCurrentUrl(),Configuration.ADMIN_URL +"/priceManagement/renew");
     }
 
     @Test
     public void Coupons(){
 
-        WebElement priceManagement = driver.findElement(By.linkText("Price management"));
-        priceManagement.click();
-        WebElement coupons = driver.findElement(By.linkText("Coupons"));
-        coupons.click();
+        driver.findElement(By.linkText("Price management")).click();
+        driver.findElement(By.linkText("Coupons")).click();
         waitForFinding();
 
-        String get_url = driver.getCurrentUrl();
-        Assert.assertEquals(get_url,Configuration.ADMIN_URL +"/priceManagement/coupons");
+        Assert.assertEquals(driver.getCurrentUrl(),Configuration.ADMIN_URL +"/priceManagement/coupons");
     }
 
     @Test
     public void OperationsVehicles(){
+        driver.findElement(By.linkText("Operations Module")).click();
 
-        WebElement priceManagement = driver.findElement(By.linkText("Operations Module"));
-        priceManagement.click();
-        List<WebElement> vehicles = driver.findElements(By.linkText("Vehicles"));
-        vehicles.get(1).click();
-        waitForFinding();
+        driver.findElements(By.linkText("Vehicles")).get(1).click();
 
-        String get_url = driver.getCurrentUrl();
-        Assert.assertEquals(get_url,Configuration.ADMIN_URL +"/operations/vehicles");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class*='card-header ']")));
+
+        Assert.assertEquals(driver.getCurrentUrl(),Configuration.ADMIN_URL +"/operations/vehicles");
     }
 
     @Test
     public void OperationsSuggestions(){
 
-        WebElement priceManagement = driver.findElement(By.linkText("Operations Module"));
-        priceManagement.click();
-        WebElement suggestions = driver.findElement(By.linkText("Suggestions"));
-        suggestions.click();
+        driver.findElement(By.linkText("Operations Module")).click();
+        driver.findElement(By.linkText("Suggestions")).click();
         waitForFinding();
 
-        String get_url = driver.getCurrentUrl();
-        Assert.assertEquals(get_url,Configuration.ADMIN_URL +"/operations/operations");
+        Assert.assertEquals(driver.getCurrentUrl(),Configuration.ADMIN_URL +"/operations/operations");
     }
 
     @Test
     public void OperationsTeams(){
 
-        WebElement priceManagement = driver.findElement(By.linkText("Operations Module"));
-        priceManagement.click();
-        WebElement teams = driver.findElement(By.linkText("Teams"));
-        teams.click();
+        driver.findElement(By.linkText("Operations Module")).click();
+        driver.findElement(By.linkText("Teams")).click();
         waitForFinding();
 
-        String get_url = driver.getCurrentUrl();
-        Assert.assertEquals(get_url,Configuration.ADMIN_URL +"/operations/teams");
+        Assert.assertEquals(driver.getCurrentUrl(),Configuration.ADMIN_URL +"/operations/teams");
     }
 
     @Test
     public void ReportProblems(){
 
-        WebElement reportProblem = driver.findElement(By.linkText("Report problem"));
-        reportProblem.click();
+        driver.findElement(By.linkText("Report problem")).click();
         waitForFinding();
 
-        String get_url = driver.getCurrentUrl();
-        Assert.assertEquals(get_url,Configuration.ADMIN_URL +"/reportProblem");
+        Assert.assertEquals(driver.getCurrentUrl(),Configuration.ADMIN_URL +"/reportProblem");
     }
 
     @Test
     public void Reservation(){
 
-        WebElement reservation = driver.findElement(By.linkText("Reservation"));
-        reservation.click();
+        driver.findElement(By.linkText("Reservation")).click();
         waitForFinding();
 
-        String get_url = driver.getCurrentUrl();
-        Assert.assertEquals(get_url,Configuration.ADMIN_URL +"/reservation");
+        Assert.assertEquals(driver.getCurrentUrl(),Configuration.ADMIN_URL +"/reservation");
     }
 
     @Test
     public void Rentals(){
 
-        WebElement rentals = driver.findElement(By.linkText("Rentals"));
-        rentals.click();
+        driver.findElement(By.linkText("Rentals")).click();
         waitForFinding();
 
-        String get_url = driver.getCurrentUrl();
-        Assert.assertEquals(get_url,Configuration.ADMIN_URL +"/rentals");
+        Assert.assertEquals(driver.getCurrentUrl(),Configuration.ADMIN_URL +"/rentals");
     }
 
     @Test
     public void Zones(){
 
-        WebElement zones = driver.findElement(By.linkText("Zones"));
-        zones.click();
+        driver.findElement(By.linkText("Zones")).click();
         waitForFinding();
 
-        String get_url = driver.getCurrentUrl();
-        Assert.assertEquals(get_url,Configuration.ADMIN_URL +"/zones");
+        Assert.assertEquals(driver.getCurrentUrl(),Configuration.ADMIN_URL +"/zones");
     }
 
     @Test
